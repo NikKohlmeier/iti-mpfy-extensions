@@ -1,0 +1,86 @@
+.toplevel_page_iti-mapify-extensions #wpbody-content {
+
+    background-color: white;
+
+    font-family: Roboto, sans-serif;
+    color: #414141;
+
+    --iti-blue-main: #005da6;
+
+    h1 {
+        font-size: 31px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    form {
+        margin-left: 10px;
+    }
+
+    input, select {
+        box-shadow: 0px 1px 3px 0.5px rgba(0, 0, 0, 0.1517) inset;
+        margin-right: 10px;
+    }
+    
+    input[type='button'],
+    input[type='submit'] {
+        padding: 10px 15px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.5;
+        background-color: var(--iti-blue-main);
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select {
+        min-height: 40px;
+    }
+
+    #add-county {
+        margin-top: 10px;
+    }
+
+    .county-map-row {
+        margin-bottom: 10px;
+    }
+
+    .wrap {
+        margin: 0;
+    }
+
+    .iti-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--iti-blue-main);
+        color: white;
+        padding: 20px;
+
+        h1 {
+            color: white;
+            font-style: italic;
+        }
+
+        img {
+            max-height: 60px;
+        }
+    }
+}
+.toplevel_page_iti-mapify-extensions #wpcontent {
+    padding-left: 0;
+}
+
+/* Parsedown content */
+.iti-parsedown-container {
+	margin-left: 20px;
+}
