@@ -1,5 +1,4 @@
 # ITI Mapify Extensions [itimpfy] Plugin
-v_2.0
 
 ***Current features**: Shortcode Templates, Accessibility Injection, Category Filter*
 
@@ -42,12 +41,12 @@ Generates HTML for main description (topmost text-input on map-locations post ed
 - `address` - Address of location, all one line, comma separated
 - `cash` - Doesn't expect any specific values. For ex: `cash="true"` does the same as `cash="foo"`
 - `hours` - Accepts hours (renders whatever format is input) separated by semicolons. A new line is made for each hours group between semicolons
-- `echeck` - Doesn't expect any specific values. For ex: `echeck="true"` does the same as `echeck="foo"`
+- `althours` - Doesn't expect any specific values. For ex: `althours="true"` does the same as `althours="foo"`. Displays extra content conditionally
 
-*NOTE: `echeck` can be changed to any naming convention to suit your needs*
+*NOTE: `althours` can be changed to any naming convention to suit your needs*
 
 #### Shortcode Example
-`[itimpfy_location_main name="New Location" address="123 Main St." cash hours="Mon - Fri: 5am-4pm; Sat & Sun: Closed;" echeck="true"]`
+`[itimpfy_location_main name="New Location" address="123 Main St." cash hours="Mon - Fri: 5am-4pm; Sat & Sun: Closed;" althours="true"]`
 
 
 ### itimpfy_location_tooltip

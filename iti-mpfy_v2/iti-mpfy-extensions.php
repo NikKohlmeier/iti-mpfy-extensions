@@ -2,8 +2,9 @@
 /*
 Plugin Name: ITI Mapify Extensions
 Description: Extends Mapify functionality, adding customization
-Version: 2.0.0
-Author: nkohlmeier@iti4dmv.com
+Version: 2.2.0
+Version_note: No changes to Mapify plugin required 🎉Added accessibility injection, CHANGELOG
+Author: N.Kohlmeier
 */
 
 // Include Parsedown library
@@ -12,8 +13,11 @@ require_once(plugin_dir_path(__FILE__) . 'vendor/Parsedown/Parsedown.php');
 // Include existing shortcode functionality
 require_once(plugin_dir_path(__FILE__) . 'includes/shortcodes.php');
 
-// Include new location filter functionality
+// Include location filter functionality
 require_once(plugin_dir_path(__FILE__) . 'includes/location-filter.php');
+
+// Include accessibility injection
+require_once(plugin_dir_path(__FILE__) . 'includes/accessibility-injection.php');
 
 // Main plugin class
 class ITIMapifyExtensions {
@@ -47,15 +51,20 @@ class ITIMapifyExtensions {
         echo '<h2 class="nav-tab-wrapper">';
         echo '<a href="?page=iti-mapify-extensions&tab=shortcodes" class="nav-tab ' . ($active_tab == 'shortcodes' ? 'nav-tab-active' : '') . '">Shortcodes</a>';
         echo '<a href="?page=iti-mapify-extensions&tab=location-filter" class="nav-tab ' . ($active_tab == 'location-filter' ? 'nav-tab-active' : '') . '">Location Filter</a>';
+        echo '<a href="?page=iti-mapify-extensions&tab=accessibility-injection" class="nav-tab ' . ($active_tab == 'accessibility-injection' ? 'nav-tab-active' : '') . '">Accessibility Injection</a>';
         echo '</h2>';
+
+        echo '<div class="itimpfy-admin-content">';
 
         if ($active_tab == 'shortcodes') {
             $this->display_shortcodes_documentation();
         } elseif ($active_tab == 'location-filter') {
             $this->display_location_filter_settings();
+        } elseif ($active_tab == 'accessibility-injection') {
+            $this->display_accessibility_injection_settings();
         }
 
-        echo '</div>';
+        echo '</div></div>';
     }
 
     private function display_shortcodes_documentation() {
@@ -74,6 +83,48 @@ class ITIMapifyExtensions {
         do_settings_sections('iti-mapify-extensions');
         submit_button();
         echo '</form>';
+    }
+
+    private function display_accessibility_injection_settings() {
+        $html = <<<HTML
+        <h2>Accessibility Injection Notes</h2>
+        <h3>Problem</h3>
+        <p>
+            Mapify does not include form labels, tags, or tabindex attributes for accessibility in some cases.
+            Google and other search engines look for these items and they are caught when performing
+            accessibility audits. First, this functionality was added to the site through simple js
+            into the WP Admin. But, has been moved here for better visibility and consistency
+        </p>
+        <h3>Purpose</h3>
+        <p>To add:</p>
+        <ul>
+            <li>
+                <h4>Form labels</h4>
+                <p>
+                    Some of Mapify's form elements don't have labels. We needed to create labels and attach them
+                    to the form elements. The form was missing a submit button, so that is added too.
+                </p>
+            </li>
+            <li>
+                <h4>Tag content</h4>
+                <p>
+                    Elements such as the hidden kiosk links didn't have text content, so we loop through all of them
+                    and give them  the content 'Kiosk'. Google complained about that one in particular.
+                </p>
+            </li>
+            <li>
+                <h4>Tabindex</h4>
+                <p>
+                    Tabindex and keyboard controls are added. The script looks for the popup to load, then focuses 
+                    the user there. Then the user can tab through the popup and hit esc as an alternative way to exit. 
+                    The form itself was a little tricky because we're applying some row-reverse flex magic, so we define 
+                    what the form's order should look like, then loop through and apply tabindex.
+                </p>
+            </li>
+            <em>NOTE: This feature works best when the accordion below the map is enabled via Mapify settings.</em>
+        </ul>
+    HTML;
+        echo $html;        
     }
 
     public function enqueue_admin_styles() {

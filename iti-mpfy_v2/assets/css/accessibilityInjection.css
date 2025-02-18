@@ -1,0 +1,18 @@
+#mpfy-map-0 *:focus,
+.mpfy-p-close:focus,
+.mpfy-p-widget-direction a:focus,
+.column-container p a:focus {
+	outline: 2px solid dodgerblue !important;
+	outline-offset: 3px;
+	border-radius: 0 !important;
+}
+.mpfy-mll-l-heading:focus {
+	outline-offset: -5px !important;
+}
+.mpfy-mll {
+	z-index: 1000;
+	margin-top: 10px;
+}
+.mpfy-mll-l-heading {
+	z-index: 1;
+}

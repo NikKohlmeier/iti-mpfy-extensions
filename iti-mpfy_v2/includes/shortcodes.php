@@ -20,7 +20,7 @@ class ITIMapifyShortcodes {
             'address' => '',
             'cash' => '',
             'hours' => '',
-            'echeck' => '',
+            'altHours' => '',
         ), $atts, 'itimpfy_location_main');
 
         // Sanitize attributes
@@ -28,10 +28,10 @@ class ITIMapifyShortcodes {
         $address = esc_html($atts['address']);
         $cash = $atts['cash'] ? true : false;
         $hours = esc_html($atts['hours']);
-        $echeck = $atts['echeck'] ? true : false;
+        $altHours = $atts['altHours'] ? true : false;
 
         // Create HTML output
-        $output = $this->generate_location_main_html($name, $address, $cash, $hours, $echeck);
+        $output = $this->generate_location_main_html($name, $address, $cash, $hours, $altHours);
 
         return $output;
     }
@@ -72,13 +72,18 @@ class ITIMapifyShortcodes {
         return do_shortcode($text);
     }
 
-    private function generate_location_main_html($name, $address, $cash, $hours, $echeck) {
+    private function generate_location_main_html($name, $address, $cash, $hours, $altHours) {
             $output = <<<HTML
             <div class="main-container">
                 <div class="column-container">
                     <p class="address bold-text">$address</p>
-                    <p>Located inside the $name, the self-service kiosk is a fast, easy way to renew your registration and walk away with your tabs!</p>
-                    <p>Simply scan your <strong>renewal postcard</strong> or type in your <strong>license plate number</strong>, pay your taxes and fees via 
+                    <p>
+                        Located inside the $name, the self-service kiosk is a fast, easy way to renew vehicle 
+                        registrations and license plate decals and print them on the spot!
+                    </p>
+                    <p>
+                        Simply enter your Registration Renewal Notice PIN or your License Plate Number and the 
+                        Date of Birth of the first registered owner, pay your fees via
         HTML;
 
             if($cash) {
@@ -86,7 +91,9 @@ class ITIMapifyShortcodes {
             }
 
             $output .= <<<HTML
-                <strong>credit card</strong> or <strong>debit card</strong>, and your registration and license plate decal prints immediately.</p>
+                    <strong>credit card</strong> or <strong>debit card</strong>, and your registration and 
+                    license plate decals print immediately.
+                </p>
                 <p>Questions? <a href="/faq">Visit our FAQ Page</a></p>
                 <p>Renew. Print. Go!</p>
                 </div>
@@ -117,10 +124,10 @@ class ITIMapifyShortcodes {
                     </ul>
         HTML;
 
-            if($echeck) {
+            if($altHours) {
                 $output .= <<<HTML
                     <div class="iti-holidays-container">
-                        <h3>Kiosks in E-Check locations will be closed on the following holidays:</h3>
+                        <h3>Kiosks will be closed on the following holidays:</h3>
                         <ul>
                             <li>New Year's Day</li>
                             <li>MLK Jr. Day</li>

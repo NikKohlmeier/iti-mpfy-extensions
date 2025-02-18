@@ -1,0 +1,8 @@
+02.14.2025
+* Changelog started
+* Added features for accessibility injection
+* Cleaned up README
+* Bumped version number
+* Removed v-number from filename (messes with updating FTP/WP-Admin)
+
+TODO: Add functionality to skip template file on update
