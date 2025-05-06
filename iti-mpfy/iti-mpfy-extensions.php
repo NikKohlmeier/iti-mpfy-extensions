@@ -2,8 +2,8 @@
 /*
 Plugin Name: ITI Mapify Extensions
 Description: Extends Mapify functionality, adding customization
-Version: 2.2.1
-Version_note: tabindex !> 0
+Version: 2.3.0
+Version_note: GitHub & Auto-Updates
 Author: N.Kohlmeier
 */
 
