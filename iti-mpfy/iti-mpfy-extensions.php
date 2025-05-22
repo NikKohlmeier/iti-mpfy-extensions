@@ -20,7 +20,7 @@ require_once(plugin_dir_path(__FILE__) . 'includes/location-filter.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/accessibility-injection.php');
 
 // Include the plugin update checker library
-require_once(plugin_dir_path(__FILE__) . 'includes/plugin-update-checker/plugin-update-checker.php');
+require_once(plugin_dir_path(__FILE__) . 'vendor/plugin-update-checker/plugin-update-checker.php');
 
 $update_checker = Puc_v4_Factory::buildUpdateChecker(
     'https://github.com/NikKohlmeier/iti-mpfy-extensions',
