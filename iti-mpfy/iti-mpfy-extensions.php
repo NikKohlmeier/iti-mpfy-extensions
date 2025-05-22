@@ -2,8 +2,8 @@
 /*
 Plugin Name: ITI Mapify Extensions
 Description: Extends Mapify functionality, adding customization
-Version: 2.3.0
-Version_note: GitHub & Auto-Updates
+Version: 2.3.1
+Version_note: GitHub & Auto-Updates - Test 1
 Author: N.Kohlmeier
 */
 
@@ -22,7 +22,10 @@ require_once(plugin_dir_path(__FILE__) . 'includes/accessibility-injection.php')
 // Include the plugin update checker library
 require_once(plugin_dir_path(__FILE__) . 'vendor/plugin-update-checker/plugin-update-checker.php');
 
-$update_checker = Puc_v4_Factory::buildUpdateChecker(
+// Use the correct namespace for the update checker factory
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$update_checker = PucFactory::buildUpdateChecker(
     'https://github.com/NikKohlmeier/iti-mpfy-extensions',
     __FILE__,
     'iti-mapify-extensions'
@@ -146,7 +149,7 @@ class ITIMapifyExtensions {
 // Initialize the plugin
 function iti_mapify_extensions_init() {
     new ITIMapifyExtensions();
-    new LocationShortcodes();  // From existing functionality
+    new LocationShortcode();  // From existing functionality
     new LocationFilter();     // New class for location filtering
 }
 

@@ -1,5 +1,5 @@
 <?php
-class LocationShortcodes {
+class LocationShortcode {
     private $parsedown;
 
     public function __construct() {
