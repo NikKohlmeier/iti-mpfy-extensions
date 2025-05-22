@@ -28,7 +28,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 $update_checker = PucFactory::buildUpdateChecker(
     'https://github.com/NikKohlmeier/iti-mpfy-extensions',
     __FILE__,
-    'iti-mapify'
+    'iti-mpfy'
 );
 
 $update_checker->setBranch('main');
