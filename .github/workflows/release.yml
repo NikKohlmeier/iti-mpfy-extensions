@@ -17,14 +17,10 @@ jobs:
       # Step 2: Package the plugin
       - name: Create plugin ZIP
         run: |
-          mkdir -p dist
-          zip -r dist/iti-mapify-extensions-${{ github.ref_name }}.zip . \
-              -x "*.git*" \
-              -x "node_modules/*" \
-              -x "vendor/*" \
-              -x "dist/*" \
-              -x ".github/*" \
-              -x "includes/shortcodes.php"
+          mkdir -p dist/iti-mpfy-extensions
+          rsync -av --exclude='.git*' --exclude='node_modules' --exclude='dist' --exclude='.github' . dist/iti-mpfy-extensions/
+          cd dist
+          zip -r iti-mpfy-extensions-${{ github.ref_name }}.zip iti-mpfy-extensions
 
       # Step 3: Create a GitHub Release
       - name: Create GitHub Release
